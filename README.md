@@ -1,4 +1,4 @@
-maltese_spellchecker_norvig
-===========================
+Maltese Spellchecker (Norvig)
+=============================
 
-Spell checker for the Maltese language
+Spell checker for the Maltese language, based on Bayseian probability.
