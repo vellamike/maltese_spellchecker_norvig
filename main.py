@@ -31,17 +31,17 @@ def known(words): return set(w for w in words if w in number_of_words)
 
 def correct(word):
     candidates = known([word]) or known(edits1(word)) or known_edits2(word) or [word]
-    #hack to make unicode:
     result = max(candidates, key=number_of_words.get)
     return result
 
 
-#Example:
-
 def sentence_correct(str):
-    for word in string.split():
-        print correct(word)
+    corrected_words = []
 
-#example:
-string = 'jien pjutttost mistagħgeb b\'kemm hi tajba di l-ewwel verżjonii'
-sentence_correct(string)
+    for word in string.split():
+        corrected_words.append(correct(word))
+    return " ".join(corrected_words)
+
+#Example:
+string = 'jien pjutttost mistagħgeb b\'kemm hi tajba di l-ewwel verżjonii' #BECOMES jien pjuttost mistagħġeb kemm hi tajba di newwel verżjoni
+print sentence_correct(string)
