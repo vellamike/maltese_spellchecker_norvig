@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import re, collections
 
-def words(text): return re.findall('[a-z]+', text.lower()) 
+def words(text): return re.findall('[a-zżħċġ]+', text.lower()) 
 
 def train(features):
     model = collections.defaultdict(lambda: 1)
@@ -10,10 +10,11 @@ def train(features):
         model[f] += 1
     return model
 
-NWORDS = train(words(file('big.txt').read()))
+word_array = file('dictionary.txt').read()
 
-alphabet = 'abcdefghijklmnopqrstuvwxyzħ'
-print u'ħ'
+number_of_words = train(words(word_array))
+
+alphabet = 'abcdefghijklmnopqrstuvwxyzħċġż'
 
 def edits1(word):
    splits     = [(word[:i], word[i:]) for i in range(len(word) + 1)]
@@ -24,13 +25,23 @@ def edits1(word):
    return set(deletes + transposes + replaces + inserts)
 
 def known_edits2(word):
-    return set(e2 for e1 in edits1(word) for e2 in edits1(e1) if e2 in NWORDS)
+    return set(e2 for e1 in edits1(word) for e2 in edits1(e1) if e2 in number_of_words)
 
-def known(words): return set(w for w in words if w in NWORDS)
+def known(words): return set(w for w in words if w in number_of_words)
 
 def correct(word):
     candidates = known([word]) or known(edits1(word)) or known_edits2(word) or [word]
     #hack to make unicode:
-    result = max(candidates, key=NWORDS.get)
-    print u" " + result
+    result = max(candidates, key=number_of_words.get)
     return result
+
+
+#Example:
+
+def sentence_correct(str):
+    for word in string.split():
+        print correct(word)
+
+#example:
+string = 'jien pjutttost mistagħgeb b\'kemm hi tajba di l-ewwel verżjonii'
+sentence_correct(string)
