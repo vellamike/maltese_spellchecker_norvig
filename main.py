@@ -43,5 +43,6 @@ def sentence_correct(str):
     return " ".join(corrected_words)
 
 #Example:
-string = 'jien pjutttost mistagħgeb b\'kemm hi tajba di l-ewwel verżjonii' #BECOMES jien pjuttost mistagħġeb kemm hi tajba di newwel verżjoni
+string = 'jien pjutttost mistagħgeb b\'kemm hi tajjba di l-ewwel verżjonii' #BECOMES jien pjuttost mistagħġeb kemm hi tajba di newwel verżjoni
+string = 'ikrah'
 print sentence_correct(string)
