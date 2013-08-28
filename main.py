@@ -11,8 +11,15 @@ def train(features):
     return model
 
 word_array = file('dictionary.txt').read()
+wiki_word_array = file('maltese_wiki_random_selection.txt').read()
+
+word_array += wiki_word_array
+word_array = wiki_word_array
 
 number_of_words = train(words(word_array))
+
+print 'num of words:'
+print number_of_words['xogħolijiet']
 
 alphabet = 'abcdefghijklmnopqrstuvwxyzħċġż'
 
@@ -31,6 +38,7 @@ def known(words): return set(w for w in words if w in number_of_words)
 
 def correct(word):
     candidates = known([word]) or known(edits1(word)) or known_edits2(word) or [word]
+    print candidates
     result = max(candidates, key=number_of_words.get)
     return result
 
@@ -39,10 +47,16 @@ def sentence_correct(str):
     corrected_words = []
 
     for word in string.split():
+        print word
         corrected_words.append(correct(word))
     return " ".join(corrected_words)
 
 #Example:
 string = 'jien pjutttost mistagħgeb b\'kemm hi tajjba di l-ewwel verżjonii' #BECOMES jien pjuttost mistagħġeb kemm hi tajba di newwel verżjoni
-string = 'ikrah'
+string = 'xoghlijiet'
 print sentence_correct(string)
+
+print 'is it known?'
+word = 'xogholijiet'
+print known([word])
+print 'xogħolijiet' in edits1(word.encode('utf8'))
