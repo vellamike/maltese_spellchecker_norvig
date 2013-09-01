@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+
+"""
+Operation can be performed on a word given the model.
+
+An operation is very agnostic
+"""
+
+class MultiOperator(object):
+    def __init__(self):
+        pass
