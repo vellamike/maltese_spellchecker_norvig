@@ -60,27 +60,9 @@ def sentence_correct(str):
         corrected_words.append(correct(word))
     return " ".join(corrected_words)
 
-
-
 #Example:
 
-string = 'żjara sabiha hafna' #BECOMES jien pjuttost mistagħġeb kemm hi tajba di newwel verżjoni
-
-
-print sentence_correct(string)
-
-#word cost of hafna ~ 78
-print number_of_words['zjara']
-print number_of_words['żjara']
-
-#word cost of hafna ~ 30
-print number_of_words['hafna']
-print number_of_words['ħafna']
-
-#word cost of sabiha ~ 6
-
-print number_of_words['sabiha']
-print number_of_words['sabiħa']
+string = 'żjara sabiha hafna'
 
 #Consequence - certain operations like h -> ħ c -> ċ, i -> ie need to
 #be very cheap. This is a bit of a nuance of the maltese language but
