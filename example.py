@@ -56,13 +56,13 @@ def sentence_correct(str):
     corrected_words = []
 
     for word in string.split():
-#        print word
         corrected_words.append(correct(word))
     return " ".join(corrected_words)
 
 #Example:
+string = "Dan prodot li jikkoregi liz-zbalji"
 
-string = 'żjara sabiha hafna'
+print sentence_correct(string)
 
 #Consequence - certain operations like h -> ħ c -> ċ, i -> ie need to
 #be very cheap. This is a bit of a nuance of the maltese language but
@@ -74,9 +74,3 @@ string = 'żjara sabiha hafna'
 #string = 'jien pjutttost mistagħgeb b\'kemm hi tajjba di l-ewwel verżjonii' #BECOMES jien pjuttost mistagħġeb kemm hi tajba di newwel verżjoni
 #string = 'ħoloq'
 #print sentence_correct(string)
-#
-#print 'is it known?'
-#word = 'holoq'
-#print known([word])
-#print 'ħoloq'.encode('ascii') in edits1(word)
-#print edits1(word)
