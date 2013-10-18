@@ -10,7 +10,6 @@ def train(features):
         model[f] += 1
     return model
 
-#word_source = file('dictionary.txt').read()
 word_source = file('maltese_wiki_random_selection.txt').read()
 word_source += file('./resources/dictionary.txt').read()
 
@@ -60,8 +59,10 @@ def sentence_correct(str):
     return " ".join(corrected_words)
 
 #Example:
-string = "Dan prodot li jikkoregi liz-zbalji"
-
+string ="Dan prodot li jikkoregi liz-zbalji"
+print "original string:"
+print string
+print "Spell-corrected string:"
 print sentence_correct(string)
 
 #Consequence - certain operations like h -> ħ c -> ċ, i -> ie need to
